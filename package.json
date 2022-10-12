@@ -1,0 +1,25 @@
+{
+  "name": "05-clima-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samujm/AplicacionClimaNode.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samujm/AplicacionClimaNode/issues"
+  },
+  "homepage": "https://github.com/samujm/AplicacionClimaNode#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "inquirer": "^9.1.3"
+  }
+}
