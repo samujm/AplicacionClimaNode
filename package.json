@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/samujm/AplicacionClimaNode#readme",
   "dependencies": {
+    "axios": "^1.1.2",
     "colors": "^1.4.0",
     "inquirer": "^9.1.3"
   }
