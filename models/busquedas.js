@@ -8,12 +8,26 @@ class Busquedas {
         // to_do: Lerr bd si existe
     }
 
+    get paramsMapbox(){
+        return {
+            'access_token':'pk.eyJ1Ijoic2FtdWptIiwiYSI6ImNsOTZoM2FjazJucGczem53aTNieHVhZnkifQ.56ZbjLLu03n_gwM4YVldVg',
+            'limit': 5,
+            'language': 'es'
+        }
+    }
+
     async ciudad(lugar = ''){
         //Peticion http 
-        // console.log('ciudad',lugar);
 
-        const resp = await axios.get('https://reqres.in/api/users?page=2');
-        console.log(resp.data.per_page);
+        const instance = axios.create({
+            baseURL: `https://api.mapbox.com/geocoding/v5/mapbox.places/${ lugar }.json`,
+            params: this.paramsMapbox                      
+        });
+
+        const resp = await instance.get();
+
+
+        console.log(resp.data);
 
 
         return []; //Retornar los lugares que coincidan con el lugar que escribio la persona
