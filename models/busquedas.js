@@ -10,7 +10,7 @@ class Busquedas {
 
     get paramsMapbox(){
         return {
-            'access_token':'pk.eyJ1Ijoic2FtdWptIiwiYSI6ImNsOTZoM2FjazJucGczem53aTNieHVhZnkifQ.56ZbjLLu03n_gwM4YVldVg',
+            'access_token': process.env.MAPBOX_KEY,
             'limit': 5,
             'language': 'es'
         }
@@ -25,12 +25,13 @@ class Busquedas {
         });
 
         const resp = await instance.get();
-
-
-        console.log(resp.data);
-
-
-        return []; //Retornar los lugares que coincidan con el lugar que escribio la persona
+        // console.log(resp.data.features);
+        return resp.data.features.map( lugar =>({
+            id: lugar.id,
+            nombre: lugar.place_name_es,
+            lng: lugar.center[0],
+            lat: lugar.center[1]
+        }));
     }
 
 }

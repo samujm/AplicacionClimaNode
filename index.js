@@ -1,7 +1,12 @@
+import * as dotenv from 'dotenv';
+dotenv.config();
+
 import {
     leerInput, pausa, inquirerMenu
 } from './helpers/inquirer.js';
 import { Busquedas } from './models/busquedas.js';
+
+// console.log(process.env.MAPBOX_KEY);
 
 
 const main = async () => {
@@ -14,14 +19,15 @@ const main = async () => {
         //Esta función imprime el menú
         opt = await inquirerMenu();
         // console.log({opt});
-
+ 
         switch (opt) {
             case 1:
                 //Mostrar mensaje
-                const lugar = await leerInput('Ciudad: ');
+                const termino = await leerInput('Ciudad: ');
                 // console.log(lugar);
 
-                await busqueda.ciudad( lugar );
+                const lugares = await busqueda.ciudad( termino );
+                console.log(lugares);
 
                 //Buscar la ciudad o lugar
 
