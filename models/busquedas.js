@@ -45,21 +45,21 @@ class Busquedas {
     async climaLugar(lat, lon){
         try {
             //instancia de axios.create()
-            const instance2 = axios.create({
-                baseURL: `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}`,
-                params: this.paramsWeather
+            const instance = axios.create({
+                baseURL: `https://api.openweathermap.org/data/2.5/weather?`,
+                params: { ...this.paramsWeather, lat, lon }
             })
 
             //respuesta, extraer la información de la data
+            const resp = await instance.get();
+            const {weather, main} = resp.data;
 
-            const resp2 = await instance2.get();
-
-            return resp2.data.main.map( () =>({
-                // desc: clima.weather[0].description,
-                min:  temp_min,
-                max: temp_max,
-                normal: temp
-            }));
+            return {
+                desc: weather[0].description ,
+                min:  main.temp_min,
+                max: main.temp_max,
+                normal: main.temp         
+            }
 
         } catch (error) {
             console.log(error);
