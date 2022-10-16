@@ -86,10 +86,12 @@ class Busquedas {
         if(  this.historial.includes( lugar.toLocaleLowerCase() ) ){
             return;
         }
-        else{
-            this.historial.unshift(lugar.toLocaleLowerCase());
-        }
 
+        this.historial = this.historial.splice(0,5);
+
+        this.historial.unshift(lugar.toLocaleLowerCase());
+        
+        //Guardar el json de la base
         this.guardarDB();
 
     }
